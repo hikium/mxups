@@ -1,0 +1,15 @@
+{
+  "name": "mxups",
+  "version": "1.0.0-alpha.1",
+  "description": "Utilities for importing and exporting local storage",
+  "main": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hikium/mxups.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.0.4",
+    "typescript": "^4.7.4"
+  }
+}
