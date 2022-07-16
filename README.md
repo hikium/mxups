@@ -17,47 +17,108 @@ With MXUPS, users can import and export this data to other instances of the same
 First, install the package:
 
 ```bash
-npm install mxups
+npm install @hikium/mxups
 ```
 
-Then, import and consume specific functions and utilities from the package:
+Then, import and use specific functions and utilities from the package:
 
 ```ts
-import { copyPackage } from "mxups";
-
-// Consume the function
-copyPackage();
+import { copyPackage } from "@hikium/mxups";
 ```
 
 It is as easy as that.
 
-## API Documentation
+## API Overview
 
-### `copyPackage()`
+For most use cases, this matrix will be all you need:
 
-Copies local storage to the user's clipboard.
+| Storage Type | Import Function  | Export Function |
+| ------------ | ---------------- | --------------- |
+| Clipboard    | `pasteStorage()` | `copyPackage()` |
+| File System  | `loadStorage()`  | `savePackage()` |
 
-### `pasteStorage()`
+> It is strongly recommended that these functions are only called upon user action, such as when the user clicks a button. **Do not use MXUPS functions programmatically.**
 
-Imports local storage from the user's clipboard.
+## API Examples
 
-This erases local storage before applying the clipboard contents. For privacy reasons, this must be called on a user action, like upon a button click.
+The following examples assume you're using React. However MXUPS also works (well) in other frameworks and in vanilla JavaScript.
 
-### `savePackage()`
+<details>
 
-Downloads a `.json` file containing local storage.
+<summary>Importing from Clipboard</summary>
 
-### `loadPackage()`
+```tsx
+import { pasteStorage } from "@hikium/mxups";
 
-Loads local storage from a `.json` file.
+export default function ImportStorageWithClipboard() {
+  // Here, when the user clicks on the button:
+  // - They will be prompted with a permissions dialog
+  // - Assuming they select "Allow", the data will be imported
+  return <button onClick={() => pasteStorage(setData)}>Import Storage Data from Clipboard<button>
+}
+```
 
-### Utilities
+</details>
+
+<details>
+
+<summary>Exporting to Clipboard</summary>
+
+```tsx
+import { copyPackage } from "@hikium/mxups";
+
+export default function ExportStorageWithClipboard() {
+  // Here, when the user clicks on the button:
+  // - A JSON package will be copied to the clipboard
+  return <button onClick={() => copyPackage()}>Export Storage Data to Clipboard<button>
+}
+
+```
+
+</details>
+
+<details>
+
+<summary>Importing from the File System</summary>
+
+```tsx
+import { loadStorage } from "@hikium/mxups";
+
+export default function ImportStorageWithFileSystem() {
+  function LoadFile() {
+  // Collect a file from the user
+
+  // Then:
+  loadStorage(file)
+  }
+
+  return <button onClick={LoadFile}>Import Storage Data from <code>.json</code> File<button>
+}
+```
+
+</details>
+
+<details>
+
+<summary>Exporting to the File System</summary>
+
+```tsx
+import { savePackage } from "@hikium/mxups";
+
+export default function ExportStorageWithFileSystem() {
+  return <button onClick={() => savePackage())}>Export Storage Data to <code>.json</code> File<button>
+}
+```
+
+</details>
+
+## Utilities
+
+MXUPS internally uses a neat set of helper utilities. These can be imported manually and used to create your own custom logic:
 
 - `clearAllStorage()` erases everything in local storage.
 - `createPackage()` converts local storage into JSON.
 - `writePackage()` clears local storage and writes the given storage package to local storage.
-
-These utilities can be composed together to go beyond what this library provides.
 
 ## Contributing
 
