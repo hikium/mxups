@@ -23,7 +23,7 @@ npm install @hikium/mxups
 Then, import and use specific functions and utilities from the package:
 
 ```ts
-import { copyPackage } from "@hikium/mxups";
+import { importCB } from "@hikium/mxups";
 ```
 
 It is as easy as that.
@@ -32,10 +32,10 @@ It is as easy as that.
 
 For most use cases, this matrix will be all you need:
 
-| Storage Type | Import Function  | Export Function |
-| ------------ | ---------------- | --------------- |
-| Clipboard    | `pasteStorage()` | `copyPackage()` |
-| File System  | `loadStorage()`  | `savePackage()` |
+| Storage Type | Import Function | Export Function |
+| ------------ | --------------- | --------------- |
+| Clipboard    | `importCB()`    | `exportCB()`    |
+| File System  | `importFS()`    | `exportFS()`    |
 
 > It is strongly recommended that these functions are only called upon user action, such as when the user clicks a button. **Do not use MXUPS functions programmatically.**
 
@@ -50,7 +50,7 @@ The following examples assume you're using React. However MXUPS also works (well
 <summary>Importing from Clipboard</summary>
 
 ```tsx
-import { pasteStorage } from "@hikium/mxups";
+import { importCB } from "@hikium/mxups";
 
 export default function ImportStorageWithClipboard() {
   function ErrorFallback() {
@@ -65,7 +65,7 @@ export default function ImportStorageWithClipboard() {
   // - They will be prompted with a permissions dialog
   // - Assuming they select "Allow", the data will be imported
   // - If it doesn't work, the alert will be shown
-  return <button onClick={() => pasteStorage(setData, ErrorFallback)}>Import Storage Data from Clipboard<button>
+  return <button onClick={() => importCB(setData, ErrorFallback)}>Import Storage Data from Clipboard<button>
 }
 ```
 
@@ -76,7 +76,7 @@ export default function ImportStorageWithClipboard() {
 <summary>Exporting to Clipboard</summary>
 
 ```tsx
-import { copyPackage } from "@hikium/mxups";
+import { exportCB } from "@hikium/mxups";
 
 export default function ExportStorageWithClipboard() {
   function ErrorFallback() {
@@ -90,7 +90,7 @@ export default function ExportStorageWithClipboard() {
   // Here, when the user clicks on the button:
   // - A JSON package will be copied to the clipboard
   // - If it doesn't work, the alert will be shown
-  return <button onClick={() => copyPackage(ErrorFallback)}>Export Storage Data to Clipboard<button>
+  return <button onClick={() => exportCB(ErrorFallback)}>Export Storage Data to Clipboard<button>
 }
 
 ```
@@ -102,7 +102,7 @@ export default function ExportStorageWithClipboard() {
 <summary>Importing from the File System</summary>
 
 ```tsx
-import { loadStorage } from "@hikium/mxups";
+import { importFS } from "@hikium/mxups";
 
 export default function ImportStorageWithFileSystem() {
   function ErrorFallback() {
@@ -113,15 +113,15 @@ export default function ImportStorageWithFileSystem() {
     )
   }
 
-  function LoadFile() {
+  function ImportFile() {
     // Collect a file from the user via additional logic
 
     // Once you've collected the file, load it:
-    loadStorage(file, ErrorFallback);
+    importFS(file, ErrorFallback);
     }
   }
 
-  return <button onClick={LoadFile}>Import Storage Data from JSON File<button>
+  return <button onClick={ImportFile}>Import Storage Data from JSON File<button>
 }
 ```
 
@@ -132,10 +132,10 @@ export default function ImportStorageWithFileSystem() {
 <summary>Exporting to the File System</summary>
 
 ```tsx
-import { savePackage } from "@hikium/mxups";
+import { exportFS } from "@hikium/mxups";
 
 export default function ExportStorageWithFileSystem() {
-  return <button onClick={() => savePackage())}>Export Storage Data to JSON File<button>
+  return <button onClick={() => exportFS())}>Export Storage Data to JSON File<button>
 }
 ```
 
@@ -143,7 +143,7 @@ export default function ExportStorageWithFileSystem() {
 
 ## Error Handling
 
-It is strongly recommended that you pass a custom error fallback function to `pasteStorage()`, `copyPackage()`, and `loadStorage()` to handle errors.
+It is strongly recommended that you pass a custom error fallback function to `importCB()`, `exportCB()`, and `importFS()` to handle errors.
 
 > **Important:** If you do not pass an error fallback, MXUPS will only log to the console and **the user will not be notified**.
 
@@ -154,8 +154,8 @@ It is strongly recommended that you pass a custom error fallback function to `pa
 MXUPS internally uses a neat set of helper utilities. These can be imported manually and used to create your own custom logic:
 
 - `clearAllStorage()` erases everything in local storage.
-- `createPackage()` converts local storage into JSON.
-- `writePackage()` clears local storage and writes the given storage package to local storage.
+- `createPackage()` converts local storage into a JSON package.
+- `writeObject()` clears local storage and writes the given storage package to local storage.
 
 ## Contributing
 

@@ -1,4 +1,4 @@
-import { writePackage } from "./utils/writePackage";
+import { writeObject } from "./utils/writeObject";
 
 /**
  * Reads the contents of a JSON file and **overwrites** local storage with the contents of the file.
@@ -6,7 +6,7 @@ import { writePackage } from "./utils/writePackage";
  * @param {Blob} file The file to read.
  * @param {() => void} errorCallback Callback function that will be called if an error occurs. **If not provided, the user will not be notified of any errors.**
  */
-export const loadStorage = (file: Blob, errorCallback?: () => void) => {
+export const importFS = (file: Blob, errorCallback?: () => void) => {
   try {
     // Read the file
     const reader = new FileReader();
@@ -20,7 +20,7 @@ export const loadStorage = (file: Blob, errorCallback?: () => void) => {
             "MXUPS: JSON detected in file. Resetting local storage and applying new storage data.",
             text
           );
-          writePackage(storage);
+          writeObject(storage);
         } catch (e) {
           // If it fails, it's not a valid JSON string
           console.error("MXUPS: Import failed. Invalid JSON string.", e, text);

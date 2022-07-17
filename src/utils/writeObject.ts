@@ -7,7 +7,7 @@ import { clearAllStorage } from "./clearAllStorage";
  *
  * @param {Object} storage The object containing the keys and values to be applied to storage.
  */
-export const writePackage = (storage: { [x: string]: string }) => {
+export const writeObject = (storage: { [x: string]: string }) => {
   clearAllStorage();
   // For each key, set the value
   // However, do not set the values of keys with the prefix "_"

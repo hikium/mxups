@@ -1,4 +1,4 @@
-import { writePackage } from "./utils/writePackage";
+import { writeObject } from "./utils/writeObject";
 
 /**
  * Reads the contents of the clipboard and **overwrites** local storage with the contents of the clipboard.
@@ -7,7 +7,7 @@ import { writePackage } from "./utils/writePackage";
  *
  * @param {() => void} errorCallback Callback function that will be called if an error occurs. **If not provided, the user will not be notified of any errors.**
  */
-export const pasteStorage = (errorCallback?: () => void) => {
+export const importCB = (errorCallback?: () => void) => {
   if (navigator.clipboard.readText) {
     console.debug(
       "MXUPS: navigator.clipboard.readText() supported. Beginning import."
@@ -21,7 +21,7 @@ export const pasteStorage = (errorCallback?: () => void) => {
           "MXUPS: JSON detected in clipboard. Resetting local storage and applying new storage data.",
           text
         );
-        writePackage(importedStorage);
+        writeObject(importedStorage);
       } catch (e) {
         // If it fails, it's not a valid JSON string
         console.error("MXUPS: Import failed. Invalid JSON string.", e, text);

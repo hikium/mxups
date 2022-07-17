@@ -5,7 +5,7 @@ import { createPackage } from "./utils/createPackage";
  *
  * @param {() => void} errorCallback Callback function that will be called if an error occurs. **If not provided, the user will not be notified of any errors.**
  */
-export const copyPackage = (errorCallback?: () => void) => {
+export const exportCB = (errorCallback?: () => void) => {
   // Get the package from local storage
   const packageData = createPackage();
 
