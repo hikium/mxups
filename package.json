@@ -1,6 +1,6 @@
 {
   "name": "@hikium/mxups",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.1",
   "description": "Utilities for importing and exporting local storage",
   "main": "src/index.ts",
   "repository": {
@@ -8,8 +8,15 @@
     "url": "git+https://github.com/hikium/mxups.git"
   },
   "license": "MIT",
+  "scripts": {
+    "build": "rollup --config"
+  },
+  "module": "./src/index.ts",
   "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-typescript": "^8.3.3",
     "@types/node": "^18.0.4",
+    "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
   "bugs": {
