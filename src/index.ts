@@ -1,20 +1,13 @@
 // Core functions (clipboard)
-export { copyPackage } from "./copyPackage";
-export { pasteStorage } from "./pasteStorage";
+export { exportCB } from "./exportCB";
+export { importCB } from "./importCB";
 
-// Core functions (file)
-export { savePackage } from "./savePackage";
-export { loadStorage } from "./loadStorage";
+// Core functions (file system)
+export { exportFS } from "./exportFS";
+export { importFS } from "./importFS";
 
 // Utilities
 export { clearAllStorage } from "./utils/clearAllStorage";
 export { createPackage } from "./utils/createPackage";
-export { writePackage } from "./utils/writePackage";
+export { writeObject } from "./utils/writeObject";
 export { version } from "./utils/version";
-
-// Console version logging
-import { version } from "./utils/version";
-console.log(
-  `Hikium MXUPS version ${version}`,
-  "https://github.com/hikium/mxups"
-);

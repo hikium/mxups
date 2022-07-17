@@ -3,7 +3,8 @@ import { createPackage } from "./utils/createPackage";
 /**
  * Saves a local storage package file to the file system.
  */
-export const savePackage = () => {
+export const exportFS = () => {
+  // Get the package from local storage
   const packageData = createPackage();
 
   // Create a file
