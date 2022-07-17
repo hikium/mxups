@@ -1,6 +1,6 @@
 {
   "name": "@hikium/mxups",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Utilities for importing and exporting local storage",
   "main": "src/index.ts",
   "repository": {
