@@ -3,7 +3,6 @@
   "version": "1.0.0-alpha.2",
   "description": "Utilities for importing and exporting local storage",
   "main": "dist/index.js",
-  "module": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hikium/mxups.git"
