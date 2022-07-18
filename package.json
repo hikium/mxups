@@ -1,8 +1,9 @@
 {
   "name": "@hikium/mxups",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Utilities for importing and exporting local storage",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hikium/mxups.git"
@@ -11,7 +12,10 @@
   "scripts": {
     "build": "rollup --config"
   },
-  "module": "./src/index.ts",
+  "files": [
+    "src/**/*",
+    "dist/**/*"
+  ],
   "devDependencies": {
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-typescript": "^8.3.3",
@@ -23,5 +27,5 @@
     "url": "https://github.com/hikium/mxups/issues"
   },
   "homepage": "https://github.com/hikium/mxups#readme",
-  "author": "The Hikium Team"
+  "author": "Noah Stanley"
 }
