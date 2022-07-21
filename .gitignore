@@ -1,10 +1,8 @@
 # Dependencies
-/node_modules
-/.pnp
-.pnp.js
+node_modules
 
 # Distribution
-/dist
+build
 
 # Testing
 /coverage

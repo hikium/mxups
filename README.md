@@ -2,15 +2,17 @@
 
 ![Hikium MXUPS wordmark](/wordmark.png)
 
+**This is currently in alpha. Don't rely on it yet. MXUPS will release soon.**
+
 Hikium Metaverse Experience Utilities for Persistent Storage (MXUPS) includes an assortment of utilities for importing, exporting, and managing local storage.
 
 ## Overview
 
-Modern web apps require persistent storage to store data. As the decentralised nature of the web increases, the need for a solution, without using user accounts, becomes clear.
+MXUPS takes storage stored using client-side Web Storage API (local storage in particular) and allows it to be imported or exported using the user's clipboard. Or, they can import and export `.json` bundle files.
 
-MXUPS uses client-side technologies, like local storage, combined with the user's clipboard (or file system), to provide a solution.
+So, when a user exports storage from app A and imports it to app B, app B has the storage of app A. If app B is not the same _application_ as app A, the storage will only have an effect if both apps coordinate their storage. That's outside of the scope of this library, though.
 
-With MXUPS, users can import and export this data to other instances of the same app, or across other supporting apps. MXUPS has been designed without limits.
+This approach works without a network connection or a centralised user account server.
 
 ## Installation & Usage
 
@@ -37,9 +39,9 @@ For most use cases, this matrix will be all you need:
 | Clipboard    | `importCB()`    | `exportCB()`    |
 | File System  | `importFS()`    | `exportFS()`    |
 
-> It is strongly recommended that these functions are only called upon user action, such as when the user clicks a button. **Do not use MXUPS functions programmatically.**
+> Only call these functions upon a user action, such as when the user clicks a button. **Do not use MXUPS functions programmatically.**
 
-> MXUPS automatically excludes keys with the `_` prefix. Applications can use the `_` prefix to store data that is not meant to be exported.
+> MXUPS automatically excludes keys with the `_` prefix (such as `_id`). Use the `_` prefix to store data that is not meant to be exported.
 
 ## API Examples
 
