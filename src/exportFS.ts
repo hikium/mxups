@@ -17,4 +17,7 @@ export const exportFS = () => {
   link.download = "data.json";
   link.click();
   URL.revokeObjectURL(url);
+
+  // Log the export
+  console.log("Exported local storage to file system.");
 };
