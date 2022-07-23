@@ -2,9 +2,8 @@
  * Returns the MXUPS package version and logs it to the browser console.
  */
 export const version = (): string => {
-  // Get the version from package.json
-  const packageManifest = require("../../package.json");
-  const versionInPackageManifest = packageManifest.version;
+  // In the future, a mechanism will be added to collect the version from package.json
+  const versionInPackageManifest = "1.0.0-alpha.3";
 
   // Log the version
   console.debug(
