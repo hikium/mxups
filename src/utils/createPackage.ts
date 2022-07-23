@@ -10,8 +10,11 @@ export const createPackage = () => {
   const filteredStorage = {};
   Object.keys(storage).forEach((key) => {
     if (key.substring(0, 1) !== "_") {
-      // @ts-ignore: Will be fixed at a later date
-      filteredStorage[key] = storage[key];
+      // Filter out "ally-supports-cache"
+      if (key !== "ally-supports-cache") {
+        // @ts-ignore: Will be fixed at a later date
+        filteredStorage[key] = storage[key];
+      }
     }
   });
 

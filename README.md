@@ -41,7 +41,7 @@ For most use cases, this matrix will be all you need:
 
 > Only call these functions upon a user action, such as when the user clicks a button. **Do not use MXUPS functions programmatically.**
 
-> MXUPS automatically excludes keys with the `_` prefix (such as `_id`). Use the `_` prefix to store data that is not meant to be exported.
+> Most MXUPS functions automatically exclude "reserved keys". This includes all keys with the `_` prefix, along with `ally-supports-cache`.
 
 ## API Examples
 
@@ -155,7 +155,8 @@ It is strongly recommended that you pass a custom error fallback function to `im
 
 MXUPS internally uses a neat set of helper utilities. These can be imported manually and used to create your own custom logic:
 
-- `clearAllStorage()` erases everything in local storage.
+- `clearStorage()` erases local storage.
+- `clearAllStorage()` completely erases local storage, including reserved keys.
 - `createPackage()` converts local storage into a JSON package.
 - `writeObject()` clears local storage and writes the given storage package to local storage.
 
