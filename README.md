@@ -1,10 +1,8 @@
 # Hikium MXUPS
 
-![Hikium MXUPS wordmark](/wordmark.png)
-
-**This is currently in alpha. Don't rely on it yet. MXUPS will release soon.**
-
 Hikium Metaverse Experience Utilities for Persistent Storage (MXUPS) includes an assortment of utilities for importing, exporting, and managing local storage.
+
+> We've deprecated and archived Hikium MXUPS.
 
 ## Overview
 
@@ -16,19 +14,7 @@ This approach works without a network connection or a centralised user account s
 
 ## Installation & Usage
 
-First, install the package:
-
-```bash
-npm install @hikium/mxups
-```
-
-Then, import and use specific functions and utilities from the package:
-
-```ts
-import { importCB } from "@hikium/mxups";
-```
-
-It is as easy as that.
+> There are versioning problems with the npm MXUPS package, so don't install MXUPS via npm. If you want to use MXUPS, download the TypeScript code in the `/src` directory.
 
 ## API Overview
 
